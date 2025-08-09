@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Palabra aleatoria — Minimal</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f58220;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+    .word {
+      font-size: 3rem;
+      padding: 20px 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="word" id="word">Cargando...</div>
+
+  <script>
+    async function cargarPalabras() {
+      try {
+        const res = await fetch('palabras.json');
+        if (!res.ok) throw new Error('Error al cargar palabras: ' + res.status);
+        const palabras = await res.json();
+        console.log('Palabras cargadas:', palabras.length);
+        const indice = Math.floor(Math.random() * palabras.length);
+        document.getElementById('word').textContent = palabras[indice];
+      } catch (error) {
+        console.error(error);
+        document.getElementById('word').textContent = 'Error al cargar palabras.';
+      }
+    }
+    cargarPalabras();
+  </script>
+</body>
+</html>
+
