@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -9,6 +9,7 @@
       margin: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #f58220;
@@ -24,10 +25,17 @@
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 24px rgba(0,0,0,0.3);
     }
+    .credit {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      user-select: none;
+    }
   </style>
 </head>
 <body>
   <div class="word" id="word">Cargando...</div>
+  <div class="credit">Creado por Raul</div>
 
   <script>
     async function cargarPalabras() {
@@ -47,4 +55,6 @@
   </script>
 </body>
 </html>
+
+
 
